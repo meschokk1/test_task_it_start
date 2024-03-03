@@ -2,7 +2,7 @@ from statistics import median
 from typing import Annotated
 from fastapi import APIRouter, Depends
 from sqlalchemy import select, and_, func
-from database import get_stats, new_session, TaskOrm
+from database import new_session, TaskOrm
 from repository import TaskRepository
 from schemas import STaskAdd, STask, STaskId, STaskDates
 import asyncio
@@ -12,7 +12,6 @@ router = APIRouter(
     prefix= '/tasks',
     tags=['Список команд']
 )
-
 
 #Эндпоинт на добавление таски
 @router.post("")
@@ -53,13 +52,8 @@ async def get_statistics(date_range: STaskDates = Depends()):
                     "median" :  await asyncio.to_thread(median, var) if var else None
                     }
 
-
         return await asyncio.gather(
             get_stat(x_values, "x"),
             get_stat(y_values,"y"),
             get_stat(z_values, "z")
         )
-
-
-
-
