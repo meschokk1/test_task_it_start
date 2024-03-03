@@ -1,7 +1,7 @@
 from statistics import median
 from typing import Annotated
 from fastapi import APIRouter, Depends
-from sqlalchemy import select, and_, func
+from sqlalchemy import select, and_
 from database import new_session, TaskOrm
 from repository import TaskRepository
 from schemas import STaskAdd, STask, STaskId, STaskDates

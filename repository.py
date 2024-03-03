@@ -1,12 +1,10 @@
 # Описываю взаимодействие с базой данных
 from datetime import datetime
-from statistics import median
-from typing import Optional
 
 from database import  new_session, TaskOrm
-from sqlalchemy import select, func, and_
+from sqlalchemy import select
 
-from schemas import STaskAdd, STask
+from schemas import STaskAdd
 
 
 class TaskRepository:
